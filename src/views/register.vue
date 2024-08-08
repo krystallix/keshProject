@@ -35,11 +35,11 @@ const formSchema = yup.object().shape({
     email: yup.string()
     .min(1)
     .email("This is not a valid email."),
-    name: yup.string().required()
+    username: yup.string().required()
     .min(3),
     password: yup.string().required()
     .min(8),
-    confirmPassword: yup.string()
+    password_confirmation: yup.string()
     .oneOf([yup.ref('password')], 'Passwords do not match'),
   })
 
@@ -50,7 +50,7 @@ const { handleSubmit } = useForm({
 
 const onSubmit = handleSubmit(async (values) => {
     try {
-        const response = await axios.post('http://localhost:8000/api/register', values);
+        const response = await axios.post('http://localhost:5000/api/register', values);
         console.log('Register successful:', response.data);
         toast({
             title: 'Register successful',
@@ -99,11 +99,11 @@ const store = useStore()
                 <CardContent>
                     <div class="grid items-center w-full gap-4">
                         <div class="flex flex-col space-y-1.5">
-                            <FormField v-slot="{ componentField  }" name="name">
+                            <FormField v-slot="{ componentField  }" name="username">
                                 <FormItem v-auto-animate>
                                     <FormLabel>Username</FormLabel>
                                     <FormControl>
-                                        <Input type="text" placeholder="KeshSupply" v-bind="componentField " />
+                                        <Input type="text" placeholder="username" v-bind="componentField " />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -133,7 +133,7 @@ const store = useStore()
                             </FormField>
                         </div>
                         <div class="flex flex-col space-y-1.5">
-                            <FormField v-slot="{ componentField  }" name="confirmPassword">
+                            <FormField v-slot="{ componentField  }" name="password_confirmation">
                                 <FormItem v-auto-animate>
                                     <FormLabel>Confirm Password</FormLabel>
                                     <FormControl>
