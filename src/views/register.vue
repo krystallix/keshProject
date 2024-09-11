@@ -17,7 +17,7 @@ import { vAutoAnimate } from '@formkit/auto-animate/vue'
 import Toaster from '@/components/ui/toast/Toaster.vue'
 import { useToast } from '@/components/ui/toast/use-toast'
 import { Icon } from '@iconify/vue'
-import { useStore } from '@/store/store'
+import { useStore } from '@/stores/store'
 import axios from 'axios'
 import { router } from '@/router/route'
 
@@ -51,7 +51,6 @@ const { handleSubmit } = useForm({
 const onSubmit = handleSubmit(async (values) => {
     try {
         const response = await axios.post('http://localhost:5000/api/register', values);
-        console.log('Register successful:', response.data);
         toast({
             title: 'Register successful',
             duration: 1000,

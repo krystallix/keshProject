@@ -7,7 +7,7 @@ import AppDashboard from '@/AppDashboard.vue';
 import Dashboard from '@/views/dashboard/dashboard.vue';
 import Member from '@/views/dashboard/member.vue';
 import GenerateDocument from '@/views/dashboard/generate-document.vue';
-import { useStore } from '@/store/store';  // Import the useStore function
+import { useStore } from '@/stores/store';  // Import the useStore function
 
 const routes: RouteRecordRaw[] = [
   {

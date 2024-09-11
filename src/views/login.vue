@@ -40,7 +40,6 @@ const { handleSubmit } = useForm({
 const onSubmit = handleSubmit(async (values) => {
     try {
         const response = await axios.post('http://localhost:5000/api/login', values);
-        console.log('Login successful:', response.data);
         toast({
             title: 'Login successful',
             duration: 1000,
@@ -60,7 +59,7 @@ const onSubmit = handleSubmit(async (values) => {
     }
 })
 
-import { useStore } from '@/store/store'
+import { useStore } from '@/stores/store'
 import { router } from '@/router/route'
 const store = useStore()
 
